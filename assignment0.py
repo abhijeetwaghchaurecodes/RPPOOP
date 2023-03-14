@@ -1,3 +1,5 @@
+#ASSIGNMENT 0 - FINDING THE AREA AND PERIMETER OF DIFFERENT POLYGONS
+
 #here first we need to import the 'math' library of python to include some basic constants like pi, tau, e, etc
 #there's also a 'sum()' function in python, which gives the sum of the iterables 
 
