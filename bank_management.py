@@ -15,7 +15,7 @@ class RothschildHoldings:
     def open_account(self):
         account_number = input("Enter account number: ")
         name = input("Enter name: ")
-        opening_balance = float(input("Enter opening balance: "))
+        opening_balance = float(input("Enter opening balance(INR): "))
         account = Account(account_number, opening_balance)
         self.accounts.append(account)
         print("Account opened successfully!")
@@ -34,7 +34,7 @@ class RothschildHoldings:
         account_number = input("Enter account number: ")
         account = self.get_account(account_number)
         if account:
-            amount = float(input("Enter amount to deposit: "))
+            amount = float(input("Enter amount to deposit(INR): "))
             account.deposit(amount)
             print(f"{amount} deposited successfully into account {account_number}")
         else:
@@ -44,10 +44,10 @@ class RothschildHoldings:
         account_number = input("Enter account number: ")
         account = self.get_account(account_number)
         if account:
-            amount = float(input("Enter amount to withdraw: "))
+            amount = float(input("Enter amount to withdraw(INR): "))
             if account.withdraw(amount):
                 print("Withdrawal successful.")
-                print(f"New account balance: {account.balance}")
+                print(f"New account balance: INR{account.balance}")
             else:
                 print("Withdrawal failed. Insufficient funds.")
         else:
@@ -59,7 +59,7 @@ class RothschildHoldings:
         account = self.get_account(account_number)
         if account:
             print(f"Account number: {account.account_number}")
-            print(f"Balance: {account.balance}")
+            print(f"Balance: INR{account.balance}")
         else:
             print(f"Account {account_number} not found")
 
@@ -72,11 +72,11 @@ class RothschildHoldings:
         
     def withdraw_money(self):
         account_number = input("Enter account number: ")
-        amount = float(input("Enter amount to withdraw: "))
+        amount = float(input("Enter amount to withdraw(INR): "))
         account = self.get_account(account_number)
         if account:
             if account.withdraw(amount):
-                print(f"Withdrawal successful. New balance: {account.balance}")
+                print(f"Withdrawal successful. New balance: INR{account.balance}")
             else:
                 print("Withdrawal failed. Insufficient balance.")
         else:
