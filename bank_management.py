@@ -98,6 +98,42 @@ class Account:
             return False
 
 
+    def transfer_funds(self):
+        sender_account_number = input("Enter sender's account number: ")
+        receiver_account_number = input("Enter receiver's account number: ")
+
+        sender_account = self.get_account(sender_account_number)
+        receiver_account = self.get_account(receiver_account_number)
+
+        if sender_account and receiver_account:
+            amount = float(input("Enter the amount to transfer(INR): "))
+            if sender_account.withdraw(amount):
+                receiver_account.deposit(amount)
+                print(f"Transfer successful. New balance for {sender_account_number}: INR{sender_account.balance}")
+            else:
+                print(f"Transfer failed. Insufficient balance in {sender_account_number}.")
+        else:
+            print("One or both of the accounts not found.")
+
+    def list_customers(self):
+        print("\nList of Customers:")
+        for customer in self.customers:
+            print(f"Name: {customer['name']}, Address: {customer['address']}")
+
+    def list_accounts(self):
+        print("\nList of Accounts:")
+        for account in self.accounts:
+            print(f"Account Number: {account.account_number}, Balance: INR{account.balance}")
+
+    def account_statement(self):
+        account_number = input("Enter account number: ")
+        account = self.get_account(account_number)
+        if account:
+            print(f"Account Statement for Account Number: {account_number}")
+            print(f"Balance: INR{account.balance}")
+            # Add more details to the statement, e.g., transaction history, etc.
+        else:
+            print(f"Account {account_number} not found.")
             
 bank = RothschildHoldings()
 
@@ -109,6 +145,10 @@ while True:
         4. Withdraw
         5. Display account details
         6. Exit
+        7. List customers
+        8. List accounts
+        9. Account statement
+        10. Exit
     """)
 
     choice = input("Enter your choice: ")
@@ -131,6 +171,18 @@ while True:
         bank.display()
         
     elif choice == '6':
+        bank.display()
+
+    elif choice == '7':
+        bank.list_customers()
+
+    elif choice == '8':
+        bank.list_accounts()
+
+    elif choice == '9':
+        bank.account_statement()
+
+    elif choice == '10':
         print("Thank you for banking with Rothschild & Co.")
         break
         
